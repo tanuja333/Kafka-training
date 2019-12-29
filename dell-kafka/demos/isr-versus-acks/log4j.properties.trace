@@ -1,0 +1,8 @@
+log4j.rootLogger=TRACE, fileAppender
+log4j.appender.fileAppender=org.apache.log4j.FileAppender
+log4j.appender.fileAppender.File=${thisErrorLog}
+log4j.appender.fileAppender.Append=False
+
+log4j.appender.fileAppender.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.fileAppender.layout.ConversionPattern= %-4r [%t] %-5p %c - %m%n
+

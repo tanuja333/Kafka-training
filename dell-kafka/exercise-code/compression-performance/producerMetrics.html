@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+  <title>Vega Lite Bar Chart</title>
+  <meta charset="utf-8">
+
+  <!--
+  <script src="https://cdn.jsdelivr.net/npm/vega@4.3.0/build/vega.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc8/build/vega-lite.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.20.0/build/vega-embed.js"></script>
+  -->
+
+  <script type="text/javascript" src="js/vega.js"></script>
+  <script type="text/javascript" src="js/vega-lite.js"></script>
+  <script type="text/javascript" src="js/vega-embed.js"></script>
+
+  <style media="screen">
+    /* Add space between Vega-Embed links  */
+    .vega-actions a {
+      margin-right: 5px;
+    }
+
+    a {
+        font-size: larger;
+    }
+
+    #parent {
+        /* inline-block hack */
+        font-size: 0;
+        text-align: center;
+    }
+
+    .child {
+        margin: 0 10px;
+        /* inline-block hack */
+        display: inline-block;
+        font-size: medium;
+        text-align: left;
+    }
+
+  </style>
+</head>
+<body>
+<div style="float:left;">
+    <ul id="links" style="float:left;"></ul>
+</div>
+<div id="parent">
+</div>
+
+<script>
+
+    // byte-rate is similar to outgoing-byte-rate
+    // byte-rate is per-topic and we drop the "topic" tag
+    // when printing metrics, so it's not very valuable
+var metrics = [
+    "compression-rate-avg",
+    "batch-size-avg",
+    "network-io-total",
+    "record-send-rate",
+    "record-size-max",
+    "record-size-avg",
+    "request-size-max",
+    "request-rate",
+    "request-latency-avg",
+    "outgoing-byte-total",
+    "outgoing-byte-rate"
+]
+
+var sources = [
+    "Images",
+    "SimpleRecords"
+]
+
+for (var i = 0; i < metrics.length; i++) {
+    for (var s = 0; s < sources.length; s++) {
+        var vlSpec = {
+            "title" : sources[s] + " " + metrics[i],
+            "width": 400,
+            "height": 250,
+            "data": {"url": "producerMetrics.tsv",
+                    "format": {"parse": {"date": "utc:'[%Y-%m-%d %H:%M:%S,%L]'"}}
+            },
+            "config" : {
+                "axis" : {
+                    "labelFontSize": 18
+                },
+                "legend" : {
+                    "labelFontSize": 18
+                },
+                "title" : {
+                    "fontSize": 22
+                }
+            },
+            "mark":  "bar",
+            "transform": [
+                    /* We don't need this calculate anymore, because we're charting
+                     * on source + compressionType as separate charts
+                     */
+                    // {"calculate": "datum.source + datum.compressionType", "as": "src"},
+                    {"filter": {"field": "name", "equal": metrics[i]}},
+                    {"filter": "test(/^" + sources[s] + "/, datum.source)"}
+                ],
+            "encoding": {
+                "y": {
+                    "field": "compressionType",
+                    "type": "ordinal"
+                },
+                "x": {
+                    "field": "val",
+                    "type": "quantitative"
+                },
+                "color": {"field": "name", "type": "nominal" }
+                
+            }
+        }
+        var iDiv = document.createElement('div');
+        iDiv.id = metrics[i] + sources[s];
+        iDiv.className = 'child';
+        document.getElementById('parent').appendChild(iDiv);
+        vegaEmbed("#" + iDiv.id, vlSpec, { "actions" :false });
+
+        var iLink = document.createElement('li');
+        var iA = document.createElement('a');
+        var linkText = document.createTextNode(metrics[i] + " " + sources[s]);
+        iA.appendChild(linkText);
+        iA.href = "#" + iDiv.id;
+        iLink.appendChild(iA);
+        document.getElementById('links').appendChild(iLink);
+    }
+}
+
+</script>
+</body>
+</html>
+

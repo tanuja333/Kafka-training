@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<style>
+			.markdown-body {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 80%;
+				margin: 0 auto 51px auto;
+				padding: 45px;
+				border:1px solid rgba(27,31,35,0.15);
+				border-radius:0 0 3px 3px;
+			}
+
+			@media (max-width: 80%) {
+				.markdown-body {
+					padding: 15px;
+				}
+			}
+
+			.top-bar {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 80%;
+				background-color: #f6f8fa;
+				border:1px solid rgba(27,31,35,0.15);
+				border-radius:3px 3px 0 0;
+				border-style: solid solid none;
+				margin: 64px auto 0;
+				width: 100%;
+				padding: 9px;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+				font-weight: bold;
+				font-size: 85%;
+}
+
+			.file-name {
+				margin-left: 22px;
+			}
+
+			
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-smi,
+.markdown-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-s,
+.markdown-body .pl-pds,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sre,
+.markdown-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+
+.markdown-body .pl-v,
+.markdown-body .pl-smw {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+
+.markdown-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+
+.markdown-body .pl-c2::before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+
+.markdown-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+
+.markdown-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.markdown-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.markdown-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+
+.markdown-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+}
+
+.markdown-body strong {
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.markdown-body hr::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body .octicon {
+  vertical-align: text-bottom;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0 !important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px !important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px !important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px !important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px !important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px !important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px !important;
+}
+
+.markdown-body::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: 0.875em;
+}
+
+.markdown-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: 0.25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+
+.markdown-body :checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+		</style>
+		<title>capacity-planning</title>
+	</head>
+
+	<body>
+		<div class="top-bar">
+	<svg style="position: absolute; padding: 2px 0 0 1px;" height="12px" width="16px" viewBox="2 2 13 12" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg>
+	<div class="file-name">
+		capacity-planning
+	</div>
+</div>
+<div class="markdown-body">
+
+<h1>Description</h1>
+<p>Files related to the &quot;Planning Capacity Needed for a Use Case&quot; exercise.</p>
+<p>Note: This exercise assumes that a GB is 1024 times a MB, and a MB is 1024 times a KB :)</p>
+<p>Students may be interested in &quot;Partition Planning&quot; specifically. If so, please see the section titled &quot;Partition Planning&quot; below.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Based on conversations with the Loudacre team, the application has the following high level requirements for the PoC.</p>
+<ul>
+<li>Message Formats: XML</li>
+<li>SLAs: 1 minute</li>
+<li>Number of Consumers per Topic: 3 (Archive, Batch Data and Fast Data processing)</li>
+<li>Number of Topics (N): Assume 10 evenly loaded topics</li>
+</ul>
+<p>Note: as per the application team's requirements, the cluster should be sized according to the sustained peak message rate (See below).</p>
+<h3 id="estimated-factors">Estimated Factors</h3>
+<pre><code>Name                        Abbreviation             Value               Units
+------------------------------------------------------------------------------
+Data Retention Period       RetPeriod                7                   Days
+Sustained Peak Msg Rate     SusPeakMsgRate           106,000             Messages/Second
+Anticipated Message Rate    DailyMsgRate             2,000,000,000       Messages
+Average Size Per Message    AvgMsgSize               Between 5 and 30    KB
+Consumers Per Topic         ConsumersPerTopic        3                   Consumers/Topic
+Number of Topics            Topics                   10                  Topics
+Compression Factor          CompFactor               1.0                 Percentage
+Replication Factor          Replication              3                   Replica
+Memory                      Memory                   Brokers * AvailMem  GB
+</code></pre>
+<p><strong>Note:</strong> In the below calculations, we obtain the <code>SusPeakMsgRate</code> and the <code>DailyMsgRate</code> as simple input parameters. We ignore the number of topics below, because the <code>SusPeakMsgRate</code> and <code>DailyMsgRate</code> account for the number of topics, but obviously if your ingestion has different rates per topic, this is worth considering.</p>
+<h2 id="discussion">Discussion</h2>
+<ul>
+<li>How could the factors in the above requirements change or become more complex?</li>
+</ul>
+<p>A reasonable way of sizing is to look for the &quot;bottleneck&quot; or the least available resource. Resources could include:</p>
+<ul>
+<li><p>CPU</p></li>
+<li><p>Memory</p></li>
+<li><p>Network Throughput (Read Throughput <em>and</em> Write Throughput)</p>
+<ul>
+<li>Disk Storage</li>
+<li>Disk Throughput</li>
+</ul></li>
+<li><p><strong>Question</strong> Based on the above resources, are there any resources missing from the above? How would memory be computed? For example, how is available memory derived?</p></li>
+<li><p>Which of the above resources above would be the least needed by Kafka Brokers?</p></li>
+</ul>
+<p>In the next sections, we use some basic formulas to estimate resources that typically influence Kafka.</p>
+<h2 id="exercise/demo">Exercise/demo</h2>
+<p>Before scrolling down, try to create the formulas for the following resources on your own:</p>
+<ul>
+<li>Overall disk space required</li>
+<li>Network <em>write</em> throughput</li>
+<li>Network <em>read</em> throughput</li>
+<li>Memory Cache</li>
+</ul>
+<h2 id="overall-disk-space">Overall Disk Space</h2>
+<p>The general equation for data storage is:</p>
+<pre><code>ReqStorage = RetPeriod * DailyMsgRate * AvgMsgSize * CompFactor * Replication
+</code></pre>
+<p>Using this general equation and assuming three-times replication (3) and initially no compression (1.0), we derive the following bounds on expected storage size.</p>
+<pre><code>ReqStorage   RetPeriod * DailyMsgRate * AvgMsgSize * CompFactor * Replication = Result (approx.)
+------------------------------------------------------------------------------------------------
+Lower Bound  7           2 Billion      5 KB         1.0          3           = 196 TB
+Upper Bound  7           2 Billion      30 KB        1.0          3           = 1,176 TB
+</code></pre>
+<h2 id="message-write-throughput">Message Write Throughput</h2>
+<p>The peak sustained write throughput per second for the Kafka cluster as a whole (WriteThroughput) is simply the amount of data written to the topics per second (DataWritten) multiplied by the Replication Factor:</p>
+<pre><code>DataWritten      = SusPeakMsgRate * AvgMsgSize * CompFactor
+Write Throughput = DataWritten    * Replication
+
+Results:
+</code></pre>
+<pre><code>Write Throughput  = SusPeakMsgRate * AvgMsgSize * CompFactor * Replication
+Lower Bound         106,000          5 KB         1.0          3             =~ 1,553 MB/s
+Upper Bound         106,000          30 KB        1.0          3             =~ 9,317 MB/s
+</code></pre>
+<h2 id="message-read-throughput">Message Read Throughput</h2>
+<p>The peak sustained read throughput per second for the Kafka cluster as a whole (ReadThroughput) depends on the amount of data written to the topics (DataWritten), the replication and compression factors and the expected number of independent consumer groups. The replication is a bit tricky - see if you understand it below.</p>
+<pre><code>Message Read Throughput = SusPeakMsgRate *
+AverageMsgSize *
+CompFactor     *
+(Replication - 1 + Consumer Groups Per Topic)
+</code></pre>
+<p>Results:</p>
+<pre><code>             SusPeakMsgRate AvgMsgSize  CompFactor Replication-1   ConsumersPerTopic   
+Lower Bound  106,000        5 KB        1.0        2               3                 =~ 2,588 MB/s 
+Upper Bound  106,000        30 KB       1.0        2               3                 =~ 15,527 MB/s
+</code></pre>
+<h2 id="caching-period">Caching Period</h2>
+<p>Caching has a definite effect on Disk Throughput requirements. If we can hit the memory for read requests, this needs to be subtracted from Disk Throughput requirements. Kafka relies on the Linux page cache for efficient disk I/O patterns.</p>
+<p>In the ideal case, the readers read their data entirely out of the in-memory cache, meaning no read load on the disks at all. For an available cluster memory of M, the caching period (CachePeriod) is:</p>
+<pre><code>CachePeriod = Memory / WriteThroughput
+</code></pre>
+<p>For example, assuming at least 200 GB free memory per node for caching, and a cluster size of 3 brokers we would expect the following caching periods:</p>
+<pre><code>              (Brokers * Memory)   / WriteThroughput         Result
+    -----------------------------------------------------------------------
+Lower Bound : (3 * 200 * 1024 MB)  / 1,553   395 seconds (6.5 minutes)
+Upper Bound : (3 * 200 * 1024 MB)  / 9,317   65 seconds
+</code></pre>
+<p>We use these CachePeriod to estimate a number of &quot;Lagging&quot; consumers below.</p>
+<h2 id="disk-throughput">Disk Throughput</h2>
+<p>We know the WriteThroughput and the ReadThroughput from above:</p>
+<pre><code>               WriteThroughput      ReadThroughput
+Lower Bound:   1,553 MB/s           2,588 MB/s 
+Upper Bound:   9,317 MB/s           15,527 MB/s
+</code></pre>
+<p>It would seem natural to take the WriteThroughput and ReadThroughput and add them together to get the overall <code>DiskThroughput</code> requirement.</p>
+<p>However, recall that the ReadThroughput was calculated using</p>
+<pre><code>DataWritten * (Replication Factor - 1 + Consumer Groups Per Topic)
+</code></pre>
+<p>Remember that reads only occur on the leader, so we can remove (Replication Factor - 1) when calculating Disk Throughput. Also, if the consumer groups never fall behind, then they'll be hitting the cache, avoiding Disk Reads.</p>
+<p>We need to apply logic from the CachePeriod above to determine the impact of consumer groups reading from outside the cache.</p>
+<p>If we estimate the number of LaggingConsumers at 1, then we get the following for disk requirements:</p>
+<pre><code>DiskReadAndWrite = WriteThroughput +
+                   DataWritten * (LaggingConsumers)
+</code></pre>
+<p>This makes the overall disk throughput:</p>
+<pre><code>               WriteThroughput  + (SusPeakMsgRate  * AvgMsgSize  * CompFactor) * LaggingConsumers
+Lower Bound:   1,553 MB/s          106,000           5 KB        * 1.0         * 1
+Upper Bound:   9,317 MB/s          106,000           30 KB       * 1.0         * 1
+
+Lower Bound =~ 1,553 MB/s + 500 MB/s   =~ 2,071 MB/s
+Upper Bound =~ 9,317 MB/s + 3,105 MB/s =~ 12,422 MB/s
+</code></pre>
+<p>(Remember to compute MB/s for the DataWritten * LaggingConsumers)</p>
+<h1 id="sizing-recommendations">Sizing Recommendations</h1>
+<p>In the above section we derived some data rates and volumes based on the supplied information and stated requirements. Based on the data above, we can produce sizing estimates for the Kafka cluster.</p>
+<p>The Kafka cluster is expected to consist of brokers with the following hardware configuration:</p>
+<ul>
+<li>CPU: 24 cores</li>
+<li>Memory = 256 GB RAM</li>
+<li>Num. Disks: = 12</li>
+<li>Disk Capacity: DiskCapacity = NumDisks x 4 TB = 48 TB</li>
+<li>Disk Throughput per Node: NumDisks x 50 MB/s = 600 MB/s (assuming 50 MB/s average read and write)</li>
+<li>Network Throughput per Node (read/write): = 10 GbE =~ approximately 1000 MB/s (allowing for network overheads)</li>
+</ul>
+<p>Note: we are assuming a JBOD presentation of disks in the above calculations. For current releases of CDK, the general recommendation is to use one or more RAID-10 disk arrays to prevent the failure of any one disk causing broker failure. However, in future releases of CDK, there will be improvements to broker resilience upon disk failure which make RAID-10 less critical. See</p>
+<p><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-113%3A+Support+replicas+movement+between+log+directories">https://cwiki.apache.org/confluence/display/KAFKA/KIP-113%3A+Support+replicas+movement+between+log+directories</a></p>
+<p>Based on the raw capabilities of the nodes themselves, the number of brokers required to accommodate the expected storage and network and disk throughput volumes is:</p>
+<pre><code>Number of Brokers  = max(ReqStorage/DiskCapacityPerNode, 
+                         TotalWriteThroughput/NetworkThroughputPerNode, 
+                         TotalReadThroughput/NetworkThroughputPerNode, 
+                         DiskThroughput/DiskThroughputPerNode)
+</code></pre>
+<p>Results</p>
+<pre><code>Lower Bound (5 KB messages):   max(196/48, 
+                                   1,553/1,000, 
+                                   2,588/1,000, 
+                                   2,071/600) = 4.08 = **5 nodes**
+Upper Bound (30 KB messages):  max(1,176/48, ...) = 24.5 = **25 nodes**
+</code></pre>
+<p>Note: given the approximate nature of the calculations it is usually advisable to provide some headroom in the capacity calculations, often around <strong>25%</strong>.</p>
+<p>We also want to allow enough capacity in the cluster to temporarily absorb a broker failure. In any case, a minimum cluster size of 4 is recommended to provide 3-times replication and to allow one broker to fail.</p>
+<h1 id="partition-planning">Partition Planning</h1>
+<p>If time, we can walk through partition sizing:</p>
+<p><a href="https://www.cloudera.com/documentation/kafka/latest/topics/kafka_faq.html#concept_lzs_2qb_c2b__section_dq5_2yb_c2b">https://www.cloudera.com/documentation/kafka/latest/topics/kafka_faq.html#concept_lzs_2qb_c2b__section_dq5_2yb_c2b</a></p>
+<h2 id="partition-sizing-walkthrough">Partition Sizing Walkthrough</h2>
+<h3 id="overall-number-of-partitions">Overall Number of Partitions</h3>
+<p>A rough rule of thumb for maximum number of partitions for <em>all</em> partitions per broker is:</p>
+<p>100 * <code>ReplicationFactor</code> * <code>NumberOfBrokers</code></p>
+<p>Source: <a href="https://www.confluent.io/blog/how-choose-number-topics-partitions-kafka-cluster">https://www.confluent.io/blog/how-choose-number-topics-partitions-kafka-cluster</a></p>
+<p>A simplified version of the above advice is here:</p>
+<p>&quot;As guideline for optimal performance, you should not have more than 3000 partitions per broker and not more than 30,000 partitions in a cluster.&quot;</p>
+<p><a href="https://www.cloudera.com/documentation/kafka/latest/topics/kafka_faq.html#concept_lzs_2qb_c2b__section_dq5_2yb_c2b">https://www.cloudera.com/documentation/kafka/latest/topics/kafka_faq.html#concept_lzs_2qb_c2b__section_dq5_2yb_c2b</a></p>
+<h3 id="high-level-points">High Level Points</h3>
+<p>From &quot;How do I size my topic&quot;: <a href="https://www.cloudera.com/documentation/kafka/latest/topics/kafka_faq.html">https://www.cloudera.com/documentation/kafka/latest/topics/kafka_faq.html</a></p>
+<ul>
+<li><p>The more partitions a topic has, the greater the overall throughput</p></li>
+<li><p>A very general rule is to create at least <code>MinPartitionsPerTopic</code> partitions per topic, and increase the number of partitions if your throughput demands it.</p>
+<ul>
+<li>For machines with direct-attached-storage, <code>MinPartitionsPerTopic</code> <em>could</em> perhaps be <code>(NumberOfBrokers * NumberOfDisksPerBroker) / ReplicationFactor</code>. For example, if brokers = 6, replication = 3 and disks per broker = 12, then minimum number of partitions would be <code>(6 * 12) / 3 = 24</code></li>
+</ul></li>
+<li><p>Partition reassignment: Reassigning partitions can be very expensive, and therefore it's better to over-provision than under-provision.</p></li>
+<li><p>If you are producing keyed messages, it can be difficult to change the number of partitions in the future. For example, if consumers are maintaining some kind of state, they'll need to account for a state change when they're assigned new partitions</p></li>
+<li><p><em>However</em> do not over-partition your topics aggressively because this can increase the amount of overhead for the brokers with respect due to:</p>
+<ul>
+<li>Number of open file handles</li>
+<li>Number of transfers to consumers / follower brokers</li>
+</ul></li>
+</ul>
+<h4 id="simple-partition-planning">Simple Partition Planning</h4>
+<p>This calculation is for computing number of partitions for single consumer group:</p>
+<ul>
+<li><p><code>Tt</code> = Total throughput</p></li>
+<li><p><code>Tp</code> = Max producer throughput for a single producer to a single partition</p></li>
+<li><p><code>Tc</code> = Max consumer throughput for a single consumer to a single partition</p></li>
+<li><p><code>Np</code> = Number of producers = <code>Tt</code> / <code>Tp</code></p></li>
+<li><p><code>Nc</code> = Number of consumers = <code>Tt</code> / <code>Tc</code></p></li>
+<li><p>Number of partitions = max(MinPartitionsPerTopic, <code>Np</code>, <code>Nc</code>) where <code>MinPartitionsPerTopic</code> is based on <code>High Level Points</code> above.</p></li>
+</ul>
+<p><strong>Exercise:</strong> Compute your team's figures above and come up with ideas for number of partitions / topics. If you need some ideas, see the following section which has a bit more detail</p>
+<h4 id="using-max-throughput-and-number-of-consumer-groups">Using Max Throughput and Number of Consumer Groups</h4>
+<p>A more complex formula expressly uses # of consumer groups, and breaks out the data sizes of messages.</p>
+<ul>
+<li><p><code>SusPeakMsgRate</code> : Peak number of messages per second</p></li>
+<li><p><code>AvgMsgSize</code> : (KB)</p></li>
+<li><p><code>CompFactor</code> : Compression Ratio or Factor</p></li>
+<li><p><code>TopicWriteThroughput</code> (MB/s) = <code>(SusPeakMsgRate * AvgMsgSize * CompFactor) / 1024 KB/MB</code></p></li>
+<li><p><code>TopicReadThroughput</code> (MB/s) = <code>(SusPeakMsgRate * AvgMsgSize * CompFactor * # Consumer Groups) / 1024 KB/MB</code></p></li>
+<li><p><code>TopicWritePartitionThroughput</code> (MB/s) = Results of Proof-of-concept analysis that you perform :-)</p></li>
+<li><p><code>TopicReadPartitionThroughput</code> (MB/s) = Results of Proof-of-concept analysis that you perform :-)</p></li>
+<li><p><code>NumberOfWritePartitions</code> is basically: <code>TopicWriteThroughput</code> / <code>TopicWritePartitionThroughput</code></p></li>
+<li><p><code>NumberOfReadPartitions</code> is basically: <code>TopicReadThroughput</code> / <code>TopicReadPartitionThroughput</code></p></li>
+<li><p>Number of Topic Partitions is:</p></li>
+</ul>
+<pre><code>max(&lt;MinPartitionsPerTopic&gt;, NumberOfWritePartitions, NumberOfReadPartitions)
+where 
+  `MinPartitionsPerTopic` is based on `High Level Points` above.
+</code></pre>
+<h2 id="further-reference:">Further Reference:</h2>
+<ul>
+<li>See Appendix from Cloudera Kafka Deployment Guide at <a href="https://www.cloudera.com/content/dam/www/marketing/resources/datasheets/deploying-and-configuring-apache-kafka-reference-guide.pdf.landing.html">https://www.cloudera.com/content/dam/www/marketing/resources/datasheets/deploying-and-configuring-apache-kafka-reference-guide.pdf.landing.html</a></li>
+</ul>
+
+		</div>
+	</body>
+</html>

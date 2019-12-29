@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "Customer",
+  "namespace": "com.cloudera.training.kafka.data",
+  "doc": "Represents a customer for Loudacre Mobile",
+  "fields": [
+    {
+      "name": "customer_id",
+      "type": "int"
+    },
+    {
+      "name": "first_name",
+      "type": "string"
+    },
+    {
+      "name": "last_name",
+      "type": "string"
+    },
+    {
+      "name": "phone_number",
+      "type": "string"
+    }
+  ]
+}

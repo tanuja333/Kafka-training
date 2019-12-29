@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "Customer",
+  "namespace": "com.cloudera.training.kafka.data",
+  "doc": "Represents a customer for Loudacre Mobile",
+  "fields": [
+    // TODO: Start here and define the fields
+  ]
+}

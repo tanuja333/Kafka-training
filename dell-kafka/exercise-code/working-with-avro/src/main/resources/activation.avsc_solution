@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "name": "Activation",
+  "namespace": "com.cloudera.training.kafka.data",
+  "doc": "An activation of a customer device for wireless service",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "long"
+    },
+    {
+      "name": "customer_id",
+      "type": "int"
+    },
+    {
+      "name": "device_id",
+      "type": "string"
+    },
+    {
+      "name": "phone_number",
+      "type": "string"
+    },
+    {
+      "name": "model",
+      "type": "string"
+    }
+  ]
+}

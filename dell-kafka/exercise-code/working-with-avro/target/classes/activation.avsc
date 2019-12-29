@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "Activation",
+  "namespace": "com.cloudera.training.kafka.data",
+  "doc": "An activation of a customer device for wireless service",
+  "fields": [
+    // TODO: Start here and define the fields
+  ]
+}
